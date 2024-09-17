@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     private bool isParticleOn;
     [SerializeField] ParticleSystem rainfall;
 
+    // Skybox Materials
+    [SerializeField] Material rainSkybox;
+    [SerializeField] Material clearSkybox;
+
     // Player mode
     private int mode;
 
@@ -84,12 +88,14 @@ public class PlayerController : MonoBehaviour
         {
             rainfall.Stop();
             isParticleOn = false;
+            RenderSettings.skybox = clearSkybox;
 
         }
         else
         {
             rainfall.Play();
             isParticleOn = true;
+            RenderSettings.skybox = rainSkybox;
         }
     }
 }
